@@ -18,8 +18,8 @@ public class Pessoa {
     public void retirarDinheiro(double valor) {
         if (valor <= this.dinheiro) {
             this.dinheiro -= valor;
-        } else {
             limparTela();
+        } else {
             System.out.println("Saldo insuficiente.");
         }
     }
@@ -27,11 +27,6 @@ public class Pessoa {
         investimento += valorDeDeposito;
         limparTela();
         System.out.println("investimento de R$"+valorDeDeposito+" foi adicionado");
-    }
-    public static void limparTela() {
-        for (int i = 0; i < 50; i++) {
-            System.out.println();
-        }
     }
     public void rendimento(){
         investimento=investimento+(investimento*0.05);
@@ -41,6 +36,11 @@ public class Pessoa {
         System.out.println("Nome: " + nome);
         System.out.println("Dinheiro: R$" + dinheiro);
         System.out.printf("Dinheiro investido: R$ %.2f%n", investimento);
+    }
+    public static void limparTela() {
+        for (int i = 0; i < 50; i++) {
+            System.out.println();
+        }
     }
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -70,6 +70,7 @@ public class Pessoa {
                     dinheiroCliente = scanner.nextDouble();
                     cliente = new Pessoa(nomeCliente, dinheiroCliente);
                     cliente.limparTela();
+                    System.out.print("Cliente Criado, para obter as informacoes tecle 5");
                     break;
                 case 2:
                     if (cliente != null) {
