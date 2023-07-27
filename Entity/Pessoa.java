@@ -13,27 +13,31 @@ public class Pessoa {
     }
     public void adicionarDinheiro(double valor) {
         this.dinheiro += valor;
+        limparTela();
     }
     public void retirarDinheiro(double valor) {
         if (valor <= this.dinheiro) {
             this.dinheiro -= valor;
         } else {
+            limparTela();
             System.out.println("Saldo insuficiente.");
         }
     }
-    public void Depositar(double valorDeDeposito) {
-        dinheiro += valorDeDeposito;
-        System.out.println("valor depositado seu saldo bancario agora é de R$"+dinheiro);
-    }
-
     public void Investir(double valorDeDeposito) {
         investimento += valorDeDeposito;
+        limparTela();
         System.out.println("investimento de R$"+valorDeDeposito+" foi adicionado");
+    }
+    public static void limparTela() {
+        for (int i = 0; i < 50; i++) {
+            System.out.println();
+        }
     }
     public void rendimento(){
         investimento=investimento+(investimento*0.05);
     }
     public void exibirInformacoes() {
+        limparTela();
         System.out.println("Nome: " + nome);
         System.out.println("Dinheiro: R$" + dinheiro);
         System.out.printf("Dinheiro investido: R$ %.2f%n", investimento);
@@ -65,6 +69,7 @@ public class Pessoa {
                     System.out.print("Digite o dinheiro do cliente: ");
                     dinheiroCliente = scanner.nextDouble();
                     cliente = new Pessoa(nomeCliente, dinheiroCliente);
+                    cliente.limparTela();
                     break;
                 case 2:
                     if (cliente != null) {
