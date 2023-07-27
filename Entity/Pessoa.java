@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Pessoa {
     private String nome;
     private double dinheiro;
+    private double investimento;
 
     public Pessoa(String nome, double dinheiro) {
         this.nome = nome;
@@ -20,9 +21,22 @@ public class Pessoa {
             System.out.println("Saldo insuficiente.");
         }
     }
+    public void Depositar(double valorDeDeposito) {
+        dinheiro += valorDeDeposito;
+        System.out.println("valor depositado seu saldo bancario agora é de R$"+dinheiro);
+    }
+
+    public void Investir(double valorDeDeposito) {
+        investimento += valorDeDeposito;
+        System.out.println("investimento de R$"+valorDeDeposito+" foi adicionado");
+    }
+    public void rendimento(){
+        investimento=investimento+(investimento*0.05);
+    }
     public void exibirInformacoes() {
         System.out.println("Nome: " + nome);
         System.out.println("Dinheiro: R$" + dinheiro);
+        System.out.printf("Dinheiro investido: R$ %.2f%n", investimento);
     }
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -36,8 +50,9 @@ public class Pessoa {
             System.out.println("1. Criar nova pessoa");
             System.out.println("2. Adicionar dinheiro");
             System.out.println("3. Retirar dinheiro");
-            System.out.println("4. Exibir informações");
-            System.out.println("5. Sair do programa");
+            System.out.println("4. Investimento");
+            System.out.println("5. Exibir informações");
+            System.out.println("6. Sair do programa");
             System.out.print("Escolha a opção desejada: ");
             opcao = scanner.nextInt();
 
@@ -70,19 +85,26 @@ public class Pessoa {
                     }
                     break;
                 case 4:
+                    System.out.println("Digite o valor que voce deseja investir: ");
+                    double valorAdicionar = scanner.nextDouble();
+                    cliente.Investir(valorAdicionar);
+
+                    break;
+                case 5:
                     if (cliente != null) {
                         cliente.exibirInformacoes();
                     } else {
                         System.out.println("Crie uma pessoa primeiro (Opção 1).");
                     }
                     break;
-                case 5:
+                case 6:
                     System.out.println("Saindo do programa...");
                     break;
                 default:
                     System.out.println("Opção inválida. Digite um número válido.");
             }
-        } while (opcao != 5);
+        cliente.rendimento();
+        } while (opcao != 6);
         scanner.close();
     }
 }
