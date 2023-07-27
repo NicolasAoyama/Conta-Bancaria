@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Pessoa {
     private String nome;
     private double dinheiro;
+    private double investimento;
 
     public Pessoa(String nome, double dinheiro) {
         this.nome = nome;
@@ -38,6 +39,17 @@ public class Pessoa {
             System.out.println("Saldo insuficiente.");
         }
     }
+    public void Depositar(double valorDeDeposito) {
+        dinheiro += valorDeDeposito;
+        System.out.println("valor depositado seu saldo bancario agora é de R$"+dinheiro);
+    }
+
+    public void Investir(double valorDeDeposito) {
+        investimento=investimento+(investimento*0.05);
+        investimento += valorDeDeposito;
+        System.out.println("investimento de R$"+valorDeDeposito+"foi adicionado");
+    }
+
 
     public void exibirInformacoes() {
         System.out.println("Nome: " + nome);
